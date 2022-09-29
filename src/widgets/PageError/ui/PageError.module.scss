@@ -1,7 +1,7 @@
-.NotFoundPage {
+.PageError {
     display: flex;
+    height: 100vh;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    font: var(--font-l);
-    height: 100%;
 }

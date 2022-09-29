@@ -1,17 +1,22 @@
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import './styles/index.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTheme } from 'app/providers/ThemeProvider';
 import { AppRouter } from 'app/providers/router';
 import { Navbar } from 'widgets/Navbar';
 import { Sidebar } from 'widgets/Sidebar';
+import { PageLoader } from 'widgets/PageLoader';
 
 function App() {
   const { theme } = useTheme();
 
+  useEffect(() => {
+    throw new Error('sdsd');
+  }, []);
+
   return (
     <div className={classNames('app', {}, [theme])}>
-      <Suspense fallback="">
+      <Suspense fallback={<PageLoader />}>
         <Navbar />
         <div className="content-page">
           <Sidebar />

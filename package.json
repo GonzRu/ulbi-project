@@ -9,8 +9,8 @@
     "build:dev": "webpack --env mode=development",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix",
-    "lint:scss": "npx stylelint \"**/*.{scss,js}\"",
-    "lint:scss:fix": "npx stylelint \"**/*.{scss,js}\" --fix",
+    "lint:scss": "npx stylelint \"**/*.scss\"",
+    "lint:scss:fix": "npx stylelint \"**/*.scss\" --fix",
     "test": "jest --config ./config/jest/jest.config.ts"
   },
   "keywords": [],
