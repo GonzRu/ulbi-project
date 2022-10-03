@@ -10,8 +10,6 @@ module.exports = {
     'plugin:i18next/recommended',
   ],
   parser: '@typescript-eslint/parser',
-  overrides: [
-  ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -35,9 +33,17 @@ module.exports = {
     'react/function-component-definition': 'off',
     'no-underscore-dangle': 'off',
     'max-len': ['error', { code: 100, ignoreComments: true }],
-
+    'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid'] }],
   },
   globals: {
     __IS_DEV__: true,
   },
+  overrides: [
+    {
+      files: ['**/src/**/*.test.{ts,tsx}'],
+      rules: {
+        'i18next/no-literal-string': 'off',
+      },
+    },
+  ],
 };
