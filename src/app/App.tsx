@@ -10,10 +10,6 @@ import { PageLoader } from 'widgets/PageLoader';
 function App() {
   const { theme } = useTheme();
 
-  useEffect(() => {
-    throw new Error('sdsd');
-  }, []);
-
   return (
     <div className={classNames('app', {}, [theme])}>
       <Suspense fallback={<PageLoader />}>

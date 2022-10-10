@@ -2,25 +2,37 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { ButtonHTMLAttributes, FC } from 'react';
 import cl from './Button.module.scss';
 
-export type ButtonTheme = 'clear' | 'outline';
+export type ButtonTheme = 'clear' | 'outline' | 'background' | 'backgroundInverted';
+
+export type ButtonSize = 'M' | 'L' | 'XL';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     className?: string;
     theme?: ButtonTheme;
+    square?: boolean;
+    size?: ButtonSize;
 }
 
 export const Button: FC<ButtonProps> = (props) => {
   const {
     className,
     children,
-    theme,
+    theme = 'clear',
+    square,
+    size = 'M',
     ...otherProps
   } = props;
+
+  console.log(`size ${cl[size]}`);
 
   return (
     <button
       type="button"
-      className={classNames(cl.Button, {}, [className, cl[theme]])}
+      className={classNames(
+        cl.Button,
+        { [cl.square]: square },
+        [className, cl[theme], cl[size]],
+      )}
       {...otherProps}
     >
       {children}
