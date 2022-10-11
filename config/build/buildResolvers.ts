@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import webpack from 'webpack';
 import { BuildOptions } from './types/config';
 

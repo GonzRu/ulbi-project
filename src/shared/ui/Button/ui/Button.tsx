@@ -2,7 +2,12 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { ButtonHTMLAttributes, FC } from 'react';
 import cl from './Button.module.scss';
 
-export type ButtonTheme = 'clear' | 'outline' | 'background' | 'backgroundInverted';
+export type ButtonTheme =
+    'clear' |
+    'clearInverted' |
+    'outline' |
+    'background' |
+    'backgroundInverted';
 
 export type ButtonSize = 'M' | 'L' | 'XL';
 
@@ -22,8 +27,6 @@ export const Button: FC<ButtonProps> = (props) => {
     size = 'M',
     ...otherProps
   } = props;
-
-  console.log(`size ${cl[size]}`);
 
   return (
     <button

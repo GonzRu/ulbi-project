@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { render } from '@testing-library/react';
 import { I18nextProvider } from 'react-i18next';
 import i18bForTests from 'shared/config/i18n/i18bForTests';

@@ -1,4 +1,4 @@
-import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator';
@@ -24,6 +24,12 @@ export const Clear = Template.bind({});
 Clear.args = {
   children: 'Text',
   theme: 'clear',
+};
+
+export const ClearInverted = Template.bind({});
+ClearInverted.args = {
+  children: 'Text',
+  theme: 'clearInverted',
 };
 
 export const Outline = Template.bind({});

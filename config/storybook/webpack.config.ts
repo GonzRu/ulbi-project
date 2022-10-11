@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import webpack, { RuleSetRule } from 'webpack';
 import path from 'path';
 import { buildCssLoader } from '../build/loaders/buildCssLoader';
@@ -26,7 +27,6 @@ export default ({ config }: {config: webpack.Configuration}) => {
 
   config.module.rules.push(buildSvgLoader());
   config.module.rules.push(buildCssLoader(true));
-  console.log(config.module.rules);
 
   return config;
 };
