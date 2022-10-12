@@ -8,10 +8,8 @@ import { Sidebar } from 'widgets/Sidebar';
 import { PageLoader } from 'widgets/PageLoader';
 
 function App() {
-  const { theme } = useTheme();
-
   return (
-    <div className={classNames('app', {}, [theme])}>
+    <div className={classNames('app')}>
       <Suspense fallback={<PageLoader />}>
         <Navbar />
         <div className="content-page">
