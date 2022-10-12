@@ -13,6 +13,7 @@ export default {
   },
 } as ComponentMeta<typeof PageError>;
 
+// eslint-disable-next-line react/jsx-props-no-spreading
 const Template: ComponentStory<typeof PageError> = (args) => <PageError {...args} />;
 
 export const Light = Template.bind({});
