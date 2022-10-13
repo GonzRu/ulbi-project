@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { fireEvent, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { renderComponent } from 'shared/lib/tests/renderComponent';
 import { userEvent } from '@storybook/testing-library';
 import { Counter } from './Counter';

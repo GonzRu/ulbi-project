@@ -27,16 +27,37 @@ Clear.args = {
   theme: 'clear',
 };
 
+export const ClearDisabled = Template.bind({});
+ClearDisabled.args = {
+  children: 'Text',
+  theme: 'clear',
+  disabled: true,
+};
+
 export const ClearInverted = Template.bind({});
 ClearInverted.args = {
   children: 'Text',
   theme: 'clearInverted',
 };
 
+export const ClearInvertedDisabled = Template.bind({});
+ClearInvertedDisabled.args = {
+  children: 'Text',
+  theme: 'clearInverted',
+  disabled: true,
+};
+
 export const Outline = Template.bind({});
 Outline.args = {
   children: 'Text',
   theme: 'outline',
+};
+
+export const OutlineDisabled = Template.bind({});
+OutlineDisabled.args = {
+  children: 'Text',
+  theme: 'outline',
+  disabled: true,
 };
 
 export const OutlineSizeL = Template.bind({});
@@ -60,10 +81,25 @@ OutlineDark.args = {
 };
 OutlineDark.decorators = [ThemeDecorator(Theme.DARK)];
 
+export const OutlineDarkDisabled = Template.bind({});
+OutlineDarkDisabled.args = {
+  children: 'Text',
+  theme: 'outline',
+  disabled: true,
+};
+OutlineDarkDisabled.decorators = [ThemeDecorator(Theme.DARK)];
+
 export const Background = Template.bind({});
 Background.args = {
   children: 'Text',
   theme: 'background',
+};
+
+export const BackgroundDisabled = Template.bind({});
+BackgroundDisabled.args = {
+  children: 'Text',
+  theme: 'background',
+  disabled: true,
 };
 
 export const BackgroundInverted = Template.bind({});
@@ -78,6 +114,15 @@ SquareSizeM.args = {
   theme: 'backgroundInverted',
   square: true,
   size: 'M',
+};
+
+export const SquareSizeMDisabled = Template.bind({});
+SquareSizeMDisabled.args = {
+  children: '>',
+  theme: 'backgroundInverted',
+  square: true,
+  size: 'M',
+  disabled: true,
 };
 
 export const SquareSizeL = Template.bind({});

@@ -1,11 +1,8 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { Button } from 'shared/ui/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { counterActions } from 'entities/Counter/slice/counterSlice';
-import { StateSchema } from 'app/providers/StoreProvider/config/StateSchema';
 import { getCounterValue } from 'entities/Counter/selectors/getCounterValue/getCounterValue';
 import { useTranslation } from 'react-i18next';
-import cl from './Counter.module.scss';
 
 export const Counter = () => {
   const dispatch = useDispatch();
