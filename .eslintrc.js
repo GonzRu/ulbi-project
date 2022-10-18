@@ -33,7 +33,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'warn',
     'react/function-component-definition': 'off',
     'no-underscore-dangle': 'off',
-    'max-len': ['error', { code: 100, ignoreComments: true }],
+    'max-len': ['error', { code: 120, ignoreComments: true }],
     'i18next/no-literal-string': ['error', { markupOnly: true, ignoreAttribute: ['data-testid'] }],
     'jsx-a11y/no-static-element-interactions': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
