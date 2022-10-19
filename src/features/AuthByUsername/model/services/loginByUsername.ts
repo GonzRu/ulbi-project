@@ -3,6 +3,7 @@ import { User, userActions } from 'entities/User';
 import axios from 'axios';
 import i18n from 'shared/config/i18n/i18n';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
+import { ThunkConfig } from 'app/providers/StoreProvider';
 
 interface LoginByUsernameProps {
     username: string;
@@ -12,21 +13,27 @@ interface LoginByUsernameProps {
 export const loginByUsername = createAsyncThunk<
     User,
     LoginByUsernameProps,
-    {rejectValue: string}>(
+    ThunkConfig<string>>(
       'login/loginByUsername',
       async (authData, thunkAPI) => {
+        const {
+          dispatch,
+          extra,
+          rejectWithValue,
+        } = thunkAPI;
+
         try {
-          const response = await axios.post<User>('http://localhost:8000/login', authData);
+          const response = await extra.api.post<User>('http://localhost:8000/login', authData);
           const { data } = response;
 
           if (!data) throw new Error();
 
-          thunkAPI.dispatch(userActions.setAuthData(data));
+          dispatch(userActions.setAuthData(data));
           localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(data));
 
           return data;
         } catch (e) {
-          return thunkAPI.rejectWithValue('error');
+          return rejectWithValue('error');
         }
       },
     );
