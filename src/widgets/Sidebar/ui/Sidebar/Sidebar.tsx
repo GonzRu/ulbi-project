@@ -4,11 +4,9 @@ import { useTranslation } from 'react-i18next';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LangSwitcher } from 'widgets/LangSwitcher';
 import { Button } from 'shared/ui/Button';
-import { AppLink, AppLinkTheme } from 'shared/ui/AppLink/AppLink';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import MainIcon from 'shared/assets/icons/main.svg';
-import AboutIcon from 'shared/assets/icons/about.svg';
 import cl from './Sidebar.module.scss';
+import { SidebarItemsList } from '../../model/items';
+import { SidebarItem } from '../SidebarItem/SidebarItem';
 
 interface SidebarProps{
     className?: string;
@@ -41,22 +39,13 @@ export function Sidebar({ className }: SidebarProps) {
         {collapsed ? '<' : '>'}
       </Button>
       <div className={cl.links}>
-        <AppLink
-          to={RoutePath.main}
-          className={cl.linkItem}
-          theme={AppLinkTheme.SECONDARY}
-        >
-          <MainIcon className={cl.icon} />
-          <span className={cl.link}>{t('Главная страница')}</span>
-        </AppLink>
-        <AppLink
-          to={RoutePath.about}
-          className={cl.linkItem}
-          theme={AppLinkTheme.SECONDARY}
-        >
-          <AboutIcon className={cl.icon} />
-          <span className={cl.link}>{t('О сайте')}</span>
-        </AppLink>
+        {SidebarItemsList.map((item) => (
+          <SidebarItem
+            key={item.path}
+            item={item}
+            collapsed={collapsed}
+          />
+        ))}
       </div>
       <div className={cl.switchers}>
         <ThemeSwitcher />
