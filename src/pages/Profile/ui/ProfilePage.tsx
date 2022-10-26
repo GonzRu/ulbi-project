@@ -15,7 +15,6 @@ interface ProfilePageProps {
 }
 
 const ProfilePage = ({ className }: ProfilePageProps) => {
-  const { t } = useTranslation();
   const dispatch = useAppDispatch();
 
   useEffect(() => {

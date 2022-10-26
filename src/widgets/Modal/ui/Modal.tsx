@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import React, {
   ReactNode, useCallback, useEffect, useRef, useState,
 } from 'react';
@@ -67,7 +67,7 @@ export const Modal = (props: ModalProps) => {
 
   if (lazy && !isMounted) return null;
 
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [cl.opened]: isOpen,
     [cl.isClosing]: isClosing,
   };
