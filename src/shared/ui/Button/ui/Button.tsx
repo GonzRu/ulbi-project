@@ -9,6 +9,7 @@ export type ButtonTheme =
     'clear' |
     'clearInverted' |
     'outline' |
+    'outlineRed' |
     'background' |
     'backgroundInverted';
 

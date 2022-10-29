@@ -53,6 +53,12 @@ Outline.args = {
   theme: 'outline',
 };
 
+export const OutlineRed = Template.bind({});
+OutlineRed.args = {
+  children: 'Text',
+  theme: 'outlineRed',
+};
+
 export const OutlineDisabled = Template.bind({});
 OutlineDisabled.args = {
   children: 'Text',
