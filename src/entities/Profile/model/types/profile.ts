@@ -1,5 +1,6 @@
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
+import { ValidateErrors } from 'entities/Profile/model/types/ValidateErrors';
 
 export interface Profile {
     first?: string;
@@ -18,4 +19,5 @@ export interface ProfileSchema {
     isLoading: boolean;
     error?: string;
     readonly: boolean;
+    validateErrors?: ValidateErrors[];
 }
