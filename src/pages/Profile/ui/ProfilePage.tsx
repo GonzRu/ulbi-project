@@ -4,9 +4,9 @@ import { DynamicModuleLoader, ReducersList } from 'shared/components/DynamicModu
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { getProfileReadonly } from 'pages/Profile/model/selectors/getProfileIsLoading/getProfileReadonly';
-import { getProfileIsLoading } from 'pages/Profile/model/selectors/getProfileReadonly/getProfileIsLoading';
-import { getProfileFormData } from 'pages/Profile/model/selectors/getProfileData/getProfileFormData';
+import { getProfileReadonly } from 'pages/Profile/model/selectors/getProfileReadonly/getProfileReadonly';
+import { getProfileIsLoading } from 'pages/Profile/model/selectors/getProfileIsLoading/getProfileIsLoading';
+import { getProfileForm } from 'pages/Profile/model/selectors/getProfileForm/getProfileForm';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import {
@@ -15,11 +15,11 @@ import {
 import { Error } from 'shared/ui/Text/ui/Text.stories';
 import { TextTheme } from 'shared/ui/Text/ui/Text';
 import { useTranslation } from 'react-i18next';
-import { ValidateErrors } from 'entities/Profile/model/types/ValidateErrors';
+import { ValidateProfileError } from 'entities/Profile/model/types/ValidateProfileError';
+import { fetchProfileData } from 'pages/Profile/model/service/fetchProfileData/fetchProfileData';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 import { getProfileError } from '../model/selectors/getProfileError/getProfileError';
 import { profileActions, profileReducer } from '../model/slice/profileSlice';
-import { fetchProfileData } from '../model/service/fetchProfileData';
 
 const reducers: ReducersList = {
   profile: profileReducer,
@@ -32,22 +32,24 @@ interface ProfilePageProps {
 const ProfilePage = ({ className }: ProfilePageProps) => {
   const { t } = useTranslation('profile');
   const dispatch = useAppDispatch();
-  const formData = useSelector(getProfileFormData);
+  const formData = useSelector(getProfileForm);
   const isLoading = useSelector(getProfileIsLoading);
   const error = useSelector(getProfileError);
   const readonly = useSelector(getProfileReadonly);
   const validateErrors = useSelector(getProfileValidateErrors);
 
   const validateErrorsTranslates = {
-    [ValidateErrors.INCORRECT_USER_DATA]: t('Некорректные данные'),
-    [ValidateErrors.INCORRECT_AGE]: t('Некорректный возвраст'),
-    [ValidateErrors.INCORRECT_COUNTRY]: t('Некорректная страна'),
-    [ValidateErrors.NO_DATA]: t('Нет данных'),
-    [ValidateErrors.SERVER_ERROR]: t('Ошибка сервера'),
+    [ValidateProfileError.INCORRECT_USER_DATA]: t('Некорректные данные'),
+    [ValidateProfileError.INCORRECT_AGE]: t('Некорректный возвраст'),
+    [ValidateProfileError.INCORRECT_COUNTRY]: t('Некорректная страна'),
+    [ValidateProfileError.NO_DATA]: t('Нет данных'),
+    [ValidateProfileError.SERVER_ERROR]: t('Ошибка сервера'),
   };
 
   useEffect(() => {
-    dispatch(fetchProfileData());
+    if (__PROJECT__ !== 'storybook') {
+      dispatch(fetchProfileData());
+    }
   }, [dispatch]);
 
   const onChangeFirstName = useCallback((value?:string) => {

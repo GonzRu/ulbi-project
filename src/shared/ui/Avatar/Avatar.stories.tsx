@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
+import avatar from 'shared/assets/tests/avatar.png';
 import { Avatar } from './Avatar';
-import img from './img.png';
 
 export default {
   title: 'shared/Avatar',
@@ -19,6 +19,6 @@ const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  src: img,
+  src: avatar,
   size: 150,
 };

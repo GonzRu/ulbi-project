@@ -5,9 +5,9 @@ import { Button } from 'shared/ui/Button';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
 import { profileActions, profileReducer } from 'pages/Profile/model/slice/profileSlice';
-import { updateProfileData } from 'pages/Profile/model/service/updateProfileData';
+import { updateProfileData } from 'pages/Profile/model/service/updateProfileData/updateProfileData';
+import { getProfileReadonly } from 'pages/Profile/model/selectors/getProfileReadonly/getProfileReadonly';
 import cl from './ProfilePageHeader.module.scss';
-import { getProfileReadonly } from '../../model/selectors/getProfileIsLoading/getProfileReadonly';
 
 interface ProfilePageHeaderProps {
     className?: string;

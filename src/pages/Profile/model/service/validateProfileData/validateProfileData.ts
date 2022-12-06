@@ -1,26 +1,26 @@
 import { Profile } from 'entities/Profile';
-import { ValidateErrors } from 'entities/Profile/model/types/ValidateErrors';
+import { ValidateProfileError } from 'entities/Profile/model/types/ValidateProfileError';
 
 export const validateProfileData = (profile?: Profile) => {
   if (!profile) {
-    return [ValidateErrors.NO_DATA];
+    return [ValidateProfileError.NO_DATA];
   }
 
   const {
     first, lastname, age, country,
   } = profile;
-  const errors: ValidateErrors[] = [];
+  const errors: ValidateProfileError[] = [];
 
   if (!first || !lastname) {
-    errors.push(ValidateErrors.INCORRECT_USER_DATA);
+    errors.push(ValidateProfileError.INCORRECT_USER_DATA);
   }
 
   if (!age || !Number.isInteger(age) || age < 0) {
-    errors.push(ValidateErrors.INCORRECT_AGE);
+    errors.push(ValidateProfileError.INCORRECT_AGE);
   }
 
   if (!country) {
-    errors.push(ValidateErrors.INCORRECT_COUNTRY);
+    errors.push(ValidateProfileError.INCORRECT_COUNTRY);
   }
 
   return errors;
