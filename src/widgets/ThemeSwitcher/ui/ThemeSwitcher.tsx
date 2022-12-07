@@ -19,6 +19,7 @@ export function ThemeSwitcher({ className }: ThemeSwitcherProps) {
     >
       {theme === Theme.DARK && <DarkIcon />}
       {theme === Theme.LIGHT && <LightIcon />}
+      {theme === Theme.ORANGE && <LightIcon />}
     </Button>
   );
 }
