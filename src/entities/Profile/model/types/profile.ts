@@ -3,6 +3,7 @@ import { Country } from 'entities/Country';
 import { ValidateProfileError } from 'entities/Profile/model/types/ValidateProfileError';
 
 export interface Profile {
+    id?: string;
     first?: string;
     lastname?: string;
     age?: number,

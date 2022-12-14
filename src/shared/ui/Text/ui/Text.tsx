@@ -36,14 +36,15 @@ export const Text = (props: TextProps) => {
     size = TextSize.M,
   } = props;
 
-  const adds: string[] = [
+  const adds = [
     cls[theme],
     cls[align],
     cls[size],
+    className,
   ];
 
   return (
-    <div className={classNames(cls.Text, { className }, adds)}>
+    <div className={classNames(cls.Text, {}, adds)}>
       {title && <p className={cls.title}>{title}</p>}
       {text && <p className={cls.text}>{text}</p>}
     </div>

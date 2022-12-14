@@ -2,6 +2,10 @@
     color: var(--primary-color);
 }
 
+.AppLink:hover {
+    opacity: 0.8;
+}
+
 .primary {
     color: var(--inverted-primary-color);
 }
