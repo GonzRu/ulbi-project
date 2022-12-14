@@ -1,0 +1,17 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { CommentCard } from './CommentCard';
+
+export default {
+  title: 'shared/CommentCard',
+  component: CommentCard,
+  argTypes: {
+    backgroundColor: { control: 'color' },
+  },
+} as ComponentMeta<typeof CommentCard>;
+
+// eslint-disable-next-line react/jsx-props-no-spreading
+const Template: ComponentStory<typeof CommentCard> = (args) => <CommentCard {...args} />;
+
+export const Normal = Template.bind({});
+Normal.args = {};
