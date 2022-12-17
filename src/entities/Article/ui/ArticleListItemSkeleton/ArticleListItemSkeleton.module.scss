@@ -1,0 +1,108 @@
+.LIST {
+    .views {
+        margin-left: auto;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+    }
+
+    .username {
+        margin-left: 8px;
+    }
+
+    .date {
+        margin-left: auto;
+    }
+
+    .title {
+        margin-top: 8px;
+    }
+
+    .img {
+        width: 100%;
+        max-height: 250px;
+        object-fit: cover;
+        margin: 16px 0;
+    }
+
+    .textBlock {
+        min-height: 200px;
+        overflow-y: hidden;
+    }
+
+    .footer {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.GALLERY {
+    width: 230px;
+    transition: 0.2s;
+    cursor: pointer;
+
+    .card {
+        padding: 15px;
+        border-radius: 12px;
+        background-color: var(--card-bg);
+    }
+
+    .imageWrapper {
+        width: 200px;
+        height: 200px;
+        position: relative;
+    }
+
+    .image {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .date {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: none;
+    }
+
+    .infoWrapper {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+    }
+
+    .types p {
+        white-space: nowrap;
+        overflow: hidden;
+        width: 115px;
+        text-overflow: ellipsis;
+    }
+
+    .views {
+        margin-left: auto;
+        margin-right: 8px;
+    }
+
+    .title {
+        margin-top: 8px;
+    }
+
+    .title p {
+        white-space: nowrap;
+        overflow: hidden;
+        width: 200px;
+        text-overflow: ellipsis;
+    }
+
+    &:hover {
+        opacity: 0.8;
+        transform: scale(1.01);
+
+        .date {
+            display: block;
+        }
+    }
+}
