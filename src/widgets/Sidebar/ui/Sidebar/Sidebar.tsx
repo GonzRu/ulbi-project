@@ -21,7 +21,7 @@ export function Sidebar({ className }: SidebarProps) {
   const onToggle = () => setCollapsed((state) => !state);
 
   return (
-    <div
+    <menu
       data-testid="sidebar"
       className={classNames(
         cl.Sidebar,
@@ -53,6 +53,6 @@ export function Sidebar({ className }: SidebarProps) {
         <ThemeSwitcher />
         <LangSwitcher className={cl.lang} short={collapsed} />
       </div>
-    </div>
+    </menu>
   );
 }

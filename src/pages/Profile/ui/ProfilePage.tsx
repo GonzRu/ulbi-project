@@ -2,23 +2,24 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { ProfileCard } from 'entities/Profile';
 import { DynamicModuleLoader, ReducersList } from 'shared/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/hooks/useAppDispatch';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { getProfileReadonly } from 'pages/Profile/model/selectors/getProfileReadonly/getProfileReadonly';
-import { getProfileIsLoading } from 'pages/Profile/model/selectors/getProfileIsLoading/getProfileIsLoading';
-import { getProfileForm } from 'pages/Profile/model/selectors/getProfileForm/getProfileForm';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
-import {
-  getProfileValidateErrors,
-} from 'pages/Profile/model/selectors/getProfileValidateErrors/getProfileValidateErrors';
 import { Error } from 'shared/ui/Text/ui/Text.stories';
 import { TextTheme } from 'shared/ui/Text/ui/Text';
 import { useTranslation } from 'react-i18next';
 import { ValidateProfileError } from 'entities/Profile/model/types/ValidateProfileError';
-import { fetchProfileData } from 'pages/Profile/model/service/fetchProfileData/fetchProfileData';
 import { useInitialEffect } from 'shared/hooks/useInitialEffect';
 import { useParams } from 'react-router-dom';
+import { Page } from 'shared/ui/Page';
+import { fetchProfileData } from '../model/service/fetchProfileData/fetchProfileData';
+import { getProfileForm } from '../model/selectors/getProfileForm/getProfileForm';
+import { getProfileIsLoading } from '../model/selectors/getProfileIsLoading/getProfileIsLoading';
+import { getProfileReadonly } from '../model/selectors/getProfileReadonly/getProfileReadonly';
+import {
+  getProfileValidateErrors,
+} from '../model/selectors/getProfileValidateErrors/getProfileValidateErrors';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 import { getProfileError } from '../model/selectors/getProfileError/getProfileError';
 import { profileActions, profileReducer } from '../model/slice/profileSlice';
@@ -91,7 +92,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames('', {}, [className])}>
+      <Page className={classNames('', {}, [className])}>
         <ProfilePageHeader />
         {validateErrors?.length && validateErrors.map((e) => (
           <Error
@@ -114,7 +115,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
           onChangeCurrency={onChangeCurrency}
           onChangeCountry={onChangeCountry}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };

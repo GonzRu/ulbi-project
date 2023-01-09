@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItemSkeleton/ArticleListItemSkeleton';
 import cl from './ArticleList.module.scss';
@@ -23,7 +22,6 @@ export const ArticleList = (props : ArticleListProps) => {
     isLoading,
     view,
   } = props;
-  const { t } = useTranslation();
 
   const renderArticle = (article: Article) => (
     <ArticleListItem
@@ -33,19 +31,12 @@ export const ArticleList = (props : ArticleListProps) => {
     />
   );
 
-  if (isLoading) {
-    return (
-      <div className={classNames(cl.ArticleList, {}, [className, cl[view]])}>
-        {getSkeletons(view)}
-      </div>
-    );
-  }
-
   return (
     <div className={classNames(cl.ArticleList, {}, [className, cl[view]])}>
       {articles.length > 0
         ? articles.map(renderArticle)
         : null}
+      {isLoading && getSkeletons(view)}
     </div>
   );
 };

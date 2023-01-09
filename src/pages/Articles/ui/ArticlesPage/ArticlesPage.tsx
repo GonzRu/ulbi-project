@@ -6,10 +6,12 @@ import { useInitialEffect } from 'shared/hooks/useInitialEffect';
 import { useSelector } from 'react-redux';
 import { ArticlesViewSelector } from 'features/ArticlesViewSelector';
 import { useCallback } from 'react';
+import { Page } from 'shared/ui/Page';
+import { fetchNextArticles } from 'pages/Articles/model/services/fetchNextArticles';
 import { fetchArticles } from '../../model/services/fetchArticles';
 import {
-  getArticlesError,
-  getArticlesIsLoading,
+  getArticlesError, getArticlesHasMore,
+  getArticlesIsLoading, getArticlesPage,
   getArticlesView,
 } from '../../model/selectors/articlesSelectors';
 import { articlesActions, articlesReducer, getArticles } from '../../model/slices/articlesSlice';
@@ -28,26 +30,32 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
   const isLoading = useSelector(getArticlesIsLoading);
   const error = useSelector(getArticlesError);
   const view = useSelector(getArticlesView);
+  const page = useSelector(getArticlesPage);
+  const hasMore = useSelector(getArticlesHasMore);
 
   const onViewChange = useCallback((view: ArticleView) => {
     dispatch(articlesActions.setView(view));
   }, [dispatch]);
 
+  const onLoadNextPart = useCallback(() => {
+    dispatch(fetchNextArticles());
+  }, [dispatch]);
+
   useInitialEffect(() => {
     dispatch(articlesActions.initState());
-    dispatch(fetchArticles());
+    dispatch(fetchArticles({ page: 1 }));
   });
 
   return (
     <DynamicModuleLoader reducers={reducers}>
-      <div className={classNames('', {}, [className])}>
+      <Page className={classNames('', {}, [className])} onScrollEnd={onLoadNextPart}>
         <ArticlesViewSelector view={view} onViewClick={onViewChange} />
         <ArticleList
           articles={articles}
           view={view}
           isLoading={isLoading}
         />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };
