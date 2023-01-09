@@ -7,7 +7,7 @@ export const fetchCommentsByArticleId = createAsyncThunk<
     string | undefined,
     ThunkConfig<string>
     >(
-      '',
+      'articleDetails/fetchCommentsByArticleId',
       async (articleId, thunkApi) => {
         try {
           if (!articleId) return thunkApi.rejectWithValue('error');

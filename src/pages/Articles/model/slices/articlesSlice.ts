@@ -2,8 +2,8 @@ import { createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolki
 import { Article, ArticleView } from 'entities/Article';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { ARTICLES_VIEW_LOCALSTORAGE_KEY } from 'shared/const/localstorage';
+import { fetchArticles } from 'pages/Articles/model/services/fetchArticles/fetchArticles';
 import { ArticlesSchema } from '../types/ArticlesSchema';
-import { fetchArticles } from '../services/fetchArticles';
 
 const articlesAdapter = createEntityAdapter<Article>({
   selectId: (article) => article.id,
@@ -23,6 +23,7 @@ export const articlesSlice = createSlice({
     view: ArticleView.LIST,
     page: 1,
     hasMore: false,
+    inited: false,
   }),
   reducers: {
     setView: (state, action: PayloadAction<ArticleView>) => {
@@ -47,6 +48,7 @@ export const articlesSlice = createSlice({
         state.isLoading = false;
         articlesAdapter.addMany(state, action.payload);
         state.hasMore = action.payload.length > 0;
+        state.inited = true;
       })
       .addCase(fetchArticles.rejected, (state, action) => {
         state.isLoading = false;

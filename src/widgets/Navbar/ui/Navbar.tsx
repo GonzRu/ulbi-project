@@ -17,8 +17,6 @@ export const Navbar: FC<NavbarProps> = () => {
   const authData = useSelector(getUserAuthData);
   const dispatch = useDispatch();
 
-  console.log(authData);
-
   const onShowModal = useCallback(() => {
     setIsAuthModal(true);
   }, []);

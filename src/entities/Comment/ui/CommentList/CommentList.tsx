@@ -30,6 +30,7 @@ export const CommentList = ({ className, comments, isLoading }: CommentListProps
       {comments?.length
         ? comments?.map((comment) => (
           <CommentCard
+            key={comment.id}
             className={cl.comment}
             comment={comment}
           />
