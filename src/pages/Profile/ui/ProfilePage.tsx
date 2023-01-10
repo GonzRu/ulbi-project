@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { ValidateProfileError } from 'entities/Profile/model/types/ValidateProfileError';
 import { useInitialEffect } from 'shared/hooks/useInitialEffect';
 import { useParams } from 'react-router-dom';
-import { Page } from 'shared/ui/Page';
+import { Page } from 'widgets/Page';
 import { fetchProfileData } from '../model/service/fetchProfileData/fetchProfileData';
 import { getProfileForm } from '../model/selectors/getProfileForm/getProfileForm';
 import { getProfileIsLoading } from '../model/selectors/getProfileIsLoading/getProfileIsLoading';

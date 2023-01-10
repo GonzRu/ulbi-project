@@ -6,7 +6,7 @@ import { useInitialEffect } from 'shared/hooks/useInitialEffect';
 import { useSelector } from 'react-redux';
 import { ArticlesViewSelector } from 'features/ArticlesViewSelector';
 import { useCallback } from 'react';
-import { Page } from 'shared/ui/Page';
+import { Page } from 'widgets/Page';
 import { fetchNextArticles } from 'pages/Articles/model/services/fetchNextArticles/fetchNextArticles';
 import { initArticles } from 'pages/Articles/model/services/initArticles/initArticles';
 import {
@@ -42,7 +42,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
-      <Page className={classNames('', {}, [className])} onScrollEnd={onLoadNextPart}>
+      <Page className={classNames('', {}, [className])} onScrollEnd={onLoadNextPart} saveScrollPosition>
         <ArticlesViewSelector view={view} onViewClick={onViewChange} />
         <ArticleList
           articles={articles}
